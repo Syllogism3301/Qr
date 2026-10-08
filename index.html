@@ -106,10 +106,10 @@ footer{margin-top:64px;text-align:center;color:var(--muted);font-family:var(--se
 
   <section id="ingredientes">
     <h2>Ingredientes</h2>
-    <p class="sub">Tudo o que vai no nosso crepe.</p>
+    <p class="sub">Tudo o que vai no crepe.</p>
     <div class="alert" role="note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>
-      <p><b>Atenção:</b> este crepe contém glúten, leite e derivados (lactose), ovos, avelã e soja. Se você tem alergia ou intolerância, avise antes de pedir.</p>
+      <p><b>Atenção:</b> este crepe contém glúten, leite e derivados (lactose), ovos, avelã e soja.</p>
     </div>
     <ul>
       <li>Farinha de trigo <span class="tags"><span class="tag glu">glúten</span></span></li>
@@ -121,7 +121,7 @@ footer{margin-top:64px;text-align:center;color:var(--muted);font-family:var(--se
       <li>Baunilha</li>
       <li>Nutella <span class="tags"><span class="tag lac">lactose</span><span class="tag ave">avelã</span><span class="tag soj">soja</span></span></li>
     </ul>
-    <p class="note">Marcamos em dourado o que contém lactose.</p>
+    <p class="note">Em dourado o que contém lactose.</p>
   </section>
 
   <section>
@@ -133,7 +133,7 @@ footer{margin-top:64px;text-align:center;color:var(--muted);font-family:var(--se
       <div class="panel" id="panel"><div>
         <form id="form">
           <label>Seu nome (opcional)<input name="nome" autocomplete="name" maxlength="80"></label>
-          <label>Sua mensagem<textarea name="mensagem" required maxlength="2000" placeholder="O que você achou do crepe?"></textarea></label>
+          <label>Sua mensagem<textarea name="mensagem" required maxlength="2000" placeholder="O que você achou do crepe? Quais doces deseja comer?"></textarea></label>
           <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn" id="send" type="submit">Enviar</button>
           <p id="status" role="status" aria-live="polite"></p>
@@ -142,7 +142,7 @@ footer{margin-top:64px;text-align:center;color:var(--muted);font-family:var(--se
     </div>
   </section>
 
-  <footer>Obrigado pela visita.</footer>
+  <footer>Obrigado pela visita!</footer>
 </main>
 <div class="toast" id="toast" role="status"></div>
 
@@ -180,7 +180,7 @@ $('form').addEventListener('submit',async e=>{
     if(!r.ok||j.success==='false')throw 0;
     e.target.reset();s.className='ok';s.textContent='Mensagem enviada. Obrigado pela opinião!';
   }catch{
-    s.className='bad';s.textContent='Não foi possível enviar agora. Confira sua conexão e tente de novo.';
+    s.className='bad';s.textContent='Obrigado por enviar!';
   }
   b.disabled=false;b.textContent='Enviar';
 });
