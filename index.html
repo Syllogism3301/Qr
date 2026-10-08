@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crepes de Nutella · Pix e ingredientes</title>
+<meta name="description" content="Pague com Pix, veja os ingredientes do crepe e deixe sua opinião.">
+<meta name="theme-color" content="#120d0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#120d0c; --surface:#1b1412; --line:#33261f; --text:#f0e4d7; --muted:#a8937f;
+  --accent:#d9ab78; --accent-ink:#1a110c; --warn:#e8b86a; --ok:#9bc29a; --bad:#e49a8e;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh; font:400 17px/1.6 var(--sans); color:var(--text); background:var(--bg);
+  background-image:radial-gradient(70% 45% at 50% -5%,rgba(217,171,120,.16),transparent 70%),radial-gradient(50% 35% at 100% 70%,rgba(120,60,40,.14),transparent 70%);
+  background-repeat:no-repeat;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+main{max-width:520px;margin:0 auto;padding:56px 22px 72px}
+h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:.005em;line-height:1.05}
+h1{font-size:clamp(2.9rem,13vw,4.2rem);font-style:italic;text-align:center}
+.lead{text-align:center;color:var(--muted);margin:14px auto 0;max-width:30ch}
+section{margin-top:64px}
+h2{font-size:2.1rem;margin-bottom:6px}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:24px}
+
+/* Pix */
+.pix{margin-top:38px;text-align:center}
+.qr{display:inline-block;background:#fff;padding:14px;border-radius:26px;box-shadow:0 0 0 1px rgba(217,171,120,.35),0 30px 70px -20px rgba(0,0,0,.8),0 0 90px -10px rgba(217,171,120,.25)}
+.qr img{display:block;width:min(64vw,260px);height:auto;image-rendering:pixelated;border-radius:10px}
+.holder{margin-top:20px;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--muted)}
+.key{margin:22px auto 0;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:360px;padding:8px 8px 8px 20px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.key small{display:block;font-size:.76rem;color:var(--muted);line-height:1.2;text-align:left}
+.key strong{display:block;font-weight:600;font-size:1.15rem;letter-spacing:.03em;text-align:left}
+button{font:inherit;cursor:pointer}
+.btn{border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.95rem;padding:12px 20px;transition:transform .15s,background .2s}
+.btn:active{transform:scale(.96)}
+.btn:hover{background:#e6bb8b}
+.link{background:none;border:0;color:var(--muted);margin-top:16px;font-size:.92rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
+.link:hover{color:var(--text)}
+
+/* Ingredientes */
+.alert{display:flex;gap:14px;padding:16px 18px;border:1px solid rgba(232,184,106,.4);background:rgba(232,184,106,.07);border-radius:18px;font-size:.96rem;margin-bottom:26px}
+.alert svg{flex:none;width:22px;height:22px;margin-top:3px;color:var(--warn)}
+.alert b{color:var(--warn);font-weight:600}
+ul{list-style:none;padding:0}
+li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:15px 2px;border-bottom:1px solid var(--line);font-size:1.12rem}
+li:last-child{border-bottom:0}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.78rem;padding:3px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tag.lac{color:var(--warn);border-color:rgba(232,184,106,.5);background:rgba(232,184,106,.08)}
+.tag.glu,.tag.ovo,.tag.ave,.tag.soj{color:#d9b9a0;border-color:#4a362b}
+.note{margin-top:14px;font-size:.88rem;color:var(--muted)}
+
+/* Opinião */
+.fold{border:1px solid var(--line);border-radius:22px;background:var(--surface);overflow:hidden}
+.fold>button{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 24px;background:none;border:0;color:var(--text);font-family:var(--serif);font-size:1.9rem;font-weight:500;text-align:left}
+.fold>button svg{width:22px;height:22px;color:var(--accent);transition:transform .35s}
+.fold.open>button svg{transform:rotate(45deg)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.fold.open .panel{grid-template-rows:1fr}
+.panel>div{overflow:hidden}
+form{padding:0 24px 26px;display:grid;gap:14px}
+label{font-size:.9rem;color:var(--muted)}
+input,textarea{width:100%;margin-top:6px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;font-size:1rem;transition:border-color .2s,box-shadow .2s}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,171,120,.18)}
+.hp{position:absolute;left:-9999px}
+form .btn{padding:15px;font-size:1rem}
+form .btn:disabled{opacity:.6}
+#status{min-height:1.4em;font-size:.94rem}
+#status.ok{color:var(--ok)}#status.bad{color:var(--bad)}
+footer{margin-top:64px;text-align:center;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--text);color:var(--accent-ink);padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;transition:.3s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.intro{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(min-width:760px){main{padding-top:84px}}
+</style>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <h1>Crepes de Nutella</h1>
+    <p class="lead">Pague com Pix pelo QR Code ou pela chave abaixo.</p>
+  </header>
+
+  <div class="pix intro" style="animation-delay:.15s">
+    <div class="qr"><img src="qr-pix.png" alt="QR Code do Pix" width="260" height="260"></div>
+    <p class="holder">João Vitor Deodato Haddad</p>
+    <div class="key">
+      <div><small>Chave Pix (celular)</small><strong>(16) 99336-6387</strong></div>
+      <button class="btn" id="copyKey" type="button">Copiar</button>
+    </div>
+    <button class="link" id="copyCode" type="button">Copiar Pix copia e cola</button>
+  </div>
+
+  <section id="ingredientes">
+    <h2>Ingredientes</h2>
+    <p class="sub">Tudo o que vai no nosso crepe.</p>
+    <div class="alert" role="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>
+      <p><b>Atenção:</b> este crepe contém glúten, leite e derivados (lactose), ovos, avelã e soja. Se você tem alergia ou intolerância, avise antes de pedir.</p>
+    </div>
+    <ul>
+      <li>Farinha de trigo <span class="tags"><span class="tag glu">glúten</span></span></li>
+      <li>Açúcar</li>
+      <li>Sal</li>
+      <li>Leite <span class="tags"><span class="tag lac">lactose</span></span></li>
+      <li>Ovos <span class="tags"><span class="tag ovo">ovo</span></span></li>
+      <li>Manteiga derretida <span class="tags"><span class="tag lac">lactose</span></span></li>
+      <li>Baunilha</li>
+      <li>Nutella <span class="tags"><span class="tag lac">lactose</span><span class="tag ave">avelã</span><span class="tag soj">soja</span></span></li>
+    </ul>
+    <p class="note">Marcamos em dourado o que contém lactose.</p>
+  </section>
+
+  <section>
+    <div class="fold" id="fold">
+      <button type="button" id="foldBtn" aria-expanded="false" aria-controls="panel">
+        Deixe sua opinião
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="panel" id="panel"><div>
+        <form id="form">
+          <label>Seu nome (opcional)<input name="nome" autocomplete="name" maxlength="80"></label>
+          <label>Sua mensagem<textarea name="mensagem" required maxlength="2000" placeholder="O que você achou do crepe?"></textarea></label>
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" id="send" type="submit">Enviar</button>
+          <p id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div></div>
+    </div>
+  </section>
+
+  <footer>Obrigado pela visita.</footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const KEY='16993366387';
+const CODE='00020126580014BR.GOV.BCB.PIX013635e22dc4-4d5e-4f2e-9537-2160930affa75204000053039865802BR5925Joao Vitor Deodato Haddad6009SAO PAULO62140510RH3xapJ6OO63046BE3';
+const EMAIL='jvdh.syllogism@gmail.com';
+const $=id=>document.getElementById(id);
+let t;
+function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(t);t=setTimeout(()=>e.classList.remove('show'),2000)}
+async function copy(txt,msg){
+  try{await navigator.clipboard.writeText(txt)}
+  catch{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}
+  toast(msg);
+}
+$('copyKey').onclick=()=>copy(KEY,'Chave Pix copiada');
+$('copyCode').onclick=()=>copy(CODE,'Pix copia e cola copiado');
+
+$('foldBtn').onclick=()=>{
+  const f=$('fold'),o=f.classList.toggle('open');
+  $('foldBtn').setAttribute('aria-expanded',o);
+  if(o)setTimeout(()=>f.scrollIntoView({behavior:'smooth',block:'center'}),150);
+};
+
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const s=$('status'),b=$('send'),d=new FormData(e.target);
+  d.append('_subject','Nova opinião sobre o crepe');
+  d.append('_template','box');
+  d.append('_captcha','false');
+  b.disabled=true;b.textContent='Enviando…';s.className='';s.textContent='';
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{Accept:'application/json'},body:d});
+    const j=await r.json();
+    if(!r.ok||j.success==='false')throw 0;
+    e.target.reset();s.className='ok';s.textContent='Mensagem enviada. Obrigado pela opinião!';
+  }catch{
+    s.className='bad';s.textContent='Não foi possível enviar agora. Confira sua conexão e tente de novo.';
+  }
+  b.disabled=false;b.textContent='Enviar';
+});
+</script>
+</body>
+</html>
